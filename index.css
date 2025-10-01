@@ -1,0 +1,11 @@
+body{
+    background-color: blueviolet;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    gap: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
