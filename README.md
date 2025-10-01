@@ -1,2 +1,4 @@
 # Counting_game
-first javascript use with html
+first javascript use with 
+
+author-Rohit
