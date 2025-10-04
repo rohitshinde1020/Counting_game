@@ -8,9 +8,11 @@ let submitguess = document.getElementById('submitguess');
 let userinput = document.getElementById('userinput');
 
 let guesscount = 1;
-let resetbutton;
+let resetbutton = document.querySelector('.resetbutton');
 
-submitguess.addEventListener('click',body);
+resetbutton.style.display = 'none';
+
+submitguess.addEventListener('click', body);
 
 function body() {
     const userguess = Number(userinput.value);
@@ -18,37 +20,59 @@ function body() {
     if (guesscount === 1) {
         prevguess.textContent = "Previous guesses:";
     }
+
     prevguess.textContent += " " + userguess;
 
-    if (userguess===number) {
-        currans.textContent="✅ Right answer! You got it correct";
-        currans.style.backgroundColor="green";
-        hiorlow.textContent='';
+    if (userguess === number) {
+        currans.textContent = "✅ Right answer! You got it correct";
+        currans.style.backgroundColor = "green";
+        hiorlow.textContent = '';
         setGameOver();
     }
 
     else if (guesscount === 10) {
-        currans.textContent="❌ Game over";
-        hiorlow.textContent="";
-        prevguess.textContent=" "
+        currans.textContent = "❌ Game over";
+        hiorlow.textContent = "";
+        prevguess.textContent = " ";
         setGameOver();
-    } 
-    
+    }
+
     else {
-        currans.textContent ="Wrong!";
+        currans.textContent = "Wrong!";
         currans.style.backgroundColor = "red";
 
         if (userguess > number) {
-            hiorlow.textContent ="The number is too high";
-        } 
+            hiorlow.textContent = "The number is too high";
+        }
 
         else {
-            hiorlow.textContent ="The number is too low";
+            hiorlow.textContent = "The number is too low";
         }
     }
+
 
     guesscount++;
     userinput.value = "";
     userinput.focus();
+
+    function resetgame() {
+        guesscount = 1;
+        const random = Math.floor(Math.random() * 100) + 1;
+        number = random;
+        prevguess.textContent = " ";
+        currans.textContent = " ";
+        hiorlow.textContent = " ";
+
+        userinput.disable=false;
+        submitguess=false;
+        
+        userinput.value = '';
+      userinput.focus();
+
+
+    }
+    resetbutton.addEventListener('click', resetGame);
+
+
 }
 
