@@ -54,25 +54,32 @@ function body() {
     guesscount++;
     userinput.value = "";
     userinput.focus();
+}
 
-    function resetgame() {
-        guesscount = 1;
-        const random = Math.floor(Math.random() * 100) + 1;
-        number = random;
-        prevguess.textContent = " ";
-        currans.textContent = " ";
-        hiorlow.textContent = " ";
+function setGameOver() {
+    userinput.disabled = true;
+    submitguess.disabled = true;
+    resetbutton.style.display = 'inline';
+}
 
-        userinput.disable=false;
-        submitguess=false;
-        
-        userinput.value = '';
-      userinput.focus();
+function resetgame() {
+    guesscount = 1;
+    const random = Math.floor(Math.random() * 100) + 1;
+    number = random;
+    prevguess.textContent = "";
+    currans.textContent = "";
+    hiorlow.textContent = "";
 
+    userinput.disabled = false;
+    submitguess.disabled = false;
 
-    }
-    resetbutton.addEventListener('click', resetGame);
+    userinput.value = '';
+    userinput.focus();
 
 
 }
+resetbutton.addEventListener('click', resetgame);
+
+
+
 
